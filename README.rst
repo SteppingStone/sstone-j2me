@@ -6,12 +6,6 @@ This is the Stepping Stone J2ME Client.
 
 TODO: describe what this does.
 
-This library includes source files taken from the following open-source projects:
-
-    - `Mobile Bitmap Fonts by Sergey Tkachev <http://mobilefonts.sourceforge.net/>`_
-    - `J2ME Polish <http://www.enough.de/products/j2me-polish/>`_
-    - `J4ME <https://code.google.com/p/j4me/>`_
-
 This project uses an ant build. You must have the Sun WTK 2.5.2 and proguard (I
 used v4.6) installed to build.
 
