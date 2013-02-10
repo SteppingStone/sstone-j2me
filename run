@@ -1,0 +1,49 @@
+#!/bin/sh
+
+#
+#   TODO: clean this up. You can use a script like this to quickly launch your
+#   app in microemu
+#
+
+cp=$HOME/opt/javalib/microemu/current/microemulator.jar
+cp="$cp:$HOME/opt/javalib/microemu/current/devices/microemu-device-minimum.jar"
+cp="$cp:$HOME/opt/javalib/microemu/current/devices/microemu-device-large.jar"
+cp="$cp:$HOME/opt/javalib/microemu/current/lib/microemu-jsr-75.jar"
+
+### Use nokiaui for testing DeviceControl
+#cp="$cp:$HOME/opt/javalib/microemu/current/lib/microemu-nokiaui.jar"
+
+#    --device org/microemu/device/large/device.xml \
+#    --resizableDevice 128 160 \
+
+device=''
+
+device="--resizableDevice 128 160 "
+device="--device org/microemu/device/minimum/device.xml"
+device="--device org/microemu/device/large/device.xml "
+device="--device org/microemu/device/default/device.xml "
+
+LAUNCH_TARGET=target/sstone-j2me_unsigned.jad
+
+# LAUNCH_TARGET=target/sstone-j2me_signed.jad
+
+### Run directly
+#java -cp "$cp:target/sstone-j2me.jar" \
+java -cp "$cp:target/sstone-j2me_unsigned.jar" \
+    org.microemu.app.Main \
+    $device \
+    --impl org.microemu.cldc.file.FileSystem \
+    "$LAUNCH_TARGET"
+
+### Microemu help
+# java -cp "$cp:target/sstone-j2me_unsigned.jar" \
+#     org.microemu.app.Main \
+#     --help
+
+
+# FileSystemRegistry
+# java -cp "$cp:target/sstone-j2me_unsigned.jar" \
+#     org.microemu.app.Main \
+#     $device \
+#     --impl org.microemu.cldc.file.FileSystem \
+#     ../handset_tester/target/handset_tester_unsigned.jad
